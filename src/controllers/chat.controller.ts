@@ -38,11 +38,11 @@ export const getSingleChatController = asyncHandler(
         const { id } = chatIdSchema.parse(req.params);
 
 
-        const result = await getSingleChatService(id, userId);
+        const { chat, messages } = await getSingleChatService(id, userId);
         
         return res.status(HTTP_STATUS.OK).json({
             "message":"Chat create or retrieved successfully!",
-            result
+            chat, messages
         })
     }
 )

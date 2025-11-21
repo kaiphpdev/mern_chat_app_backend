@@ -8,6 +8,7 @@ const authRoutes = Router();
 authRoutes.post('/register', registerController);
 authRoutes.post('/login', loginController);
 authRoutes.post('/logout', logoutController);
-authRoutes.post('/status', passportAuthenticateJwt, authStatusController);
+
+authRoutes.get('/status', passportAuthenticateJwt, authStatusController);
 
 export default authRoutes

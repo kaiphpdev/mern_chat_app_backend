@@ -83,12 +83,19 @@ export const getSingleChatService = async(chatId: string, userId: string) => {
         )
     }
 
-    const message = await MessageModel.find({chatId})
+    const messages = await MessageModel.find({chatId})
                     .populate("sender", "name avatar")
                     .populate({
                         path: "reply",
-                        select: "name avatar"
-                    })
+                        select: "content image sender",
+                        populate:{
+                            path: "sender",
+                            select: "name avatar"
+                        }
+                    }).sort({createdAt: -1})
 
-    return 
+    return {
+        chat,
+        messages
+    }
 }
