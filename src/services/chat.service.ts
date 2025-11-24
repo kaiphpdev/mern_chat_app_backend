@@ -8,7 +8,7 @@ export const createChatService = async (
     userId: string,
     body: {
         participantId?: string;
-        isGroup?: boolean | string;
+        isGroup?: boolean;
         participants?: string[];
         groupName?: string;
     }
@@ -49,8 +49,7 @@ export const createChatService = async (
             createdBy: userId,
         })
     }
-    //  Implement WebSocket
-
+    
     return chat;
 
 }

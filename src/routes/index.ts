@@ -8,12 +8,8 @@ const router = Router();
 
 // Auth
 router.use('/auth', authRoutes);
-
-
 // Chat
 router.use('/chat', chatRoutes);
-
-
 // User
 router.use('/user', userRoutes);
 

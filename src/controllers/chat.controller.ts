@@ -7,7 +7,7 @@ import { createChatService, getSingleChatService, getUserChatsService } from "..
 export const createChatController = asyncHandler(
     async (req: Request, res: Response) => {
         const userId = req.user?._id;
-
+        
         const body = createChatSchema.parse(req.body);
 
         const chat = await createChatService(userId, body);
