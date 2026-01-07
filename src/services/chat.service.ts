@@ -49,6 +49,10 @@ export const createChatService = async (
             createdBy: userId,
         })
     }
+
+    // Implement websocket
+
+    // const populateChat = await chat?.populate("participants", "name avatar")
     
     return chat;
 
@@ -97,4 +101,21 @@ export const getSingleChatService = async(chatId: string, userId: string) => {
         chat,
         messages
     }
+}
+
+
+
+export const validateChatParticipant = async (chatId:string, userId: string) => {
+    const chat = await ChatModel.findOne({
+        _id:chatId,
+        participants:{
+            $in: [userId]
+        }
+    });
+
+    if(!chat){
+        throw new BadRequestException('User not a participants in chat')
+    }
+    return chat;
+
 }
